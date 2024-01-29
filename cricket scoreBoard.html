@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Boilerplate Code</title>
+    <style>
+        .bgImage{
+            background-image:  url("https://t4.ftcdn.net/jpg/00/77/82/01/360_F_77820126_8McAUc7ukCGCLZNHoTxwXkZVGaZ105Oz.jpg");
+            height: 100%;
+        }
+        .score-card{
+            margin: 30px;
+            padding: 20px;
+            line-height: 30px;
+            text-align: center;
+        }
+        .score-card>h1>span{
+            color: blue;
+        }
+        .score-card>h2>span{
+     color: red;
+ }
+        .button-div>button{
+            background-color: rgb(3, 192, 3);
+            color: white;
+            border: none;
+            padding: 10px;
+            font-weight: 700;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+         
+    </div>
+  </body>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    // Code goes here
+    ReactDOM.createRoot(document.getElementById("root")).render(<CricketScoreboard/>)
+     
+    function RenderButtons({runs,setRuns,wickets,setWickets}){
+        return(
+            <>
+            <div className="button-div">
+     <button onClick={()=>setRuns(runs+3)}>Increase Runs by 3</button>&nbsp;&nbsp;&nbsp;
+     <button onClick={()=>setRuns(runs+4)}>Increase Runs by 4</button><br/><br/>
+     <button onClick={()=>setRuns(runs+8)}>Increase Runs by 8</button>&nbsp;&nbsp;&nbsp;
+     <button onClick={()=>{if(wickets<10){setWickets(wickets+1)}}}>Update wicket by 1</button> 
+</div>
+            </>
+        )
+    }
+    
+    function CricketScoreboard(){
+        const [runs,setRuns]=React.useState(0);
+        const [wickets,setWickets]=React.useState(0);
+        return(
+            
+            <>
+               <div className="score-card">
+                    <h1>Your score is <span>{runs}</span></h1>
+                    <h2>You lost  <span>{wickets} </span>wickets till now</h2>  
+                    <RenderButtons runs={runs} setRuns={setRuns} setWickets={setWickets} wickets={wickets}/>  
+               </div>
+               
+            </>
+        )
+     }
+  </script>
+</html>
