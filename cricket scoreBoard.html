@@ -14,12 +14,20 @@
             padding: 20px;
             line-height: 30px;
             text-align: center;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+            width: 400px;
+            position: absolute;
+            top: 30%;
+            left:35%;
+            color: rgb(255, 255, 255);
+            background-color: rgb(244, 167, 66);
         }
         .score-card>h1>span{
-            color: blue;
+            color: rgb(238, 255, 0);
         }
         .score-card>h2>span{
-     color: red;
+     color: rgb(255, 0, 0);
  }
         .button-div>button{
             background-color: rgb(3, 192, 3);
@@ -63,10 +71,12 @@
         return(
             
             <>
+            <img width="100%" src="https://img.freepik.com/free-vector/realistic-soccer-football-stadium-illustration_52683-60377.jpg?size=626&ext=jpg&ga=GA1.1.519978082.1705154606&semt=ais" alt="Cricket ground"/>
                <div className="score-card">
                     <h1>Your score is <span>{runs}</span></h1>
                     <h2>You lost  <span>{wickets} </span>wickets till now</h2>  
-                    <RenderButtons runs={runs} setRuns={setRuns} setWickets={setWickets} wickets={wickets}/>  
+                    {wickets!==10 ?<RenderButtons runs={runs} setRuns={setRuns} setWickets={setWickets} wickets={wickets}/>:"" }
+                      
                </div>
                
             </>
